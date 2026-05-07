@@ -1,0 +1,365 @@
+/* =============================================
+   portfolio.css — Corrected version
+   Main fixes:
+   - Removed conflicting display:flex on .cards-grid (was overriding display:grid)
+   - Renamed .card-iconic → .card-icon to match the HTML
+   - Removed unused .stu/.code/.bus/.self rules
+   - Removed duplicate .cards-grid block
+   - Fixed .card width conflict with grid layout
+============================================= */
+
+/* ---- GENERAL ---- */
+body {
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+}
+
+/* ---- NAVBAR ---- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 40px;
+  background: white;
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.nav-links {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.logn, .exlpo-butt ,.back-home{
+  border-radius: 11px;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.logn:hover, .exlpo-butt:hover ,.back-home:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  color: black;
+  text-shadow: 5px 5px 3px #1b48c5;
+}
+
+.logo span {
+  color: #2563eb;
+}
+
+a {
+  padding: 8px;
+  border-radius: 6px;
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover, .home {
+  color: #2563eb;
+  background: #eff6ff;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* ---- HERO SECTION ---- */
+h2 {
+  text-align: center;
+  font-size: 110px;
+  margin-top: 3px;
+  margin-bottom: 11px;
+  font-family: 'Syne', sans-serif;
+  text-shadow: 5px 5px 3px #1b48c5;
+  color: #2563eb;
+}
+
+.text-center {
+  margin-top: 60px;
+}
+
+.text {
+  color: black;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+p {
+  font-size: 17px;
+  text-align: center;
+  color: gray;
+  margin-top: 3px;
+}
+
+/* ---- EXPLORE BUTTON ---- */
+.Explo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* ---- PATH HEADING ---- */
+#path {
+  color: black;
+  font-size: 65px;
+  font-family: 'Syne', sans-serif;
+  text-align: center;
+  margin-bottom: 13px;
+}
+
+/* =============================================
+   CARDS SECTION
+============================================= */
+.cards-section {
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 48px;
+}
+
+/* =============================================
+   FIX: .cards-grid
+   BEFORE (broken): had TWO blocks — one with
+   "display: grid" and one with "display: flex".
+   The flex block came AFTER and overrode the grid,
+   making all cards stack or misalign.
+   AFTER (fixed): ONE single block with display:grid only.
+============================================= */
+.cards-grid {
+  display: grid;                          /* use CSS Grid for the 4 columns */
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* =============================================
+   FLIP CARD STRUCTURE
+   .card > .card-inner > .card-front + .card-back
+============================================= */
+.card {
+  height: 240px;
+  perspective: 1000px; /* gives the 3D depth effect */
+  cursor: pointer;
+  margin: 15px 15px ;
+  /* FIX: removed "width: 250px" — inside a grid, the width
+     is controlled by grid-template-columns, not a fixed width.
+     A fixed width was causing cards to overflow or not fill columns. */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d; /* enables 3D transforms on children */
+}
+
+/* Flip the inner container 180deg on hover */
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Both faces sit on top of each other, filling the card */
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
+
+  border-radius: 14px;
+
+  /* This hides the face when it's rotated away from the viewer */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* FRONT face — white background */
+.card-front {
+  background: white;
+  border: 1.5px solid #bfdbfe;
+  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.10);
+  transition: box-shadow 0.2s;
+  transform: rotateY(0deg); /* faces the viewer normally */
+}
+
+.card:hover .card-front {
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.18);
+}
+
+/* =============================================
+   FIX: .card-icon
+   BEFORE: CSS had ".card-iconic" but HTML used
+   class="card-icon" — name mismatch, so the emoji
+   had no font-size and looked tiny.
+   AFTER: renamed to ".card-icon" to match the HTML.
+============================================= */
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+.card-front h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.card-hint {
+  font-size: 12px;
+  color: #2563eb;
+  opacity: 0.7;
+}
+
+/* BACK face — blue background, starts hidden (rotated 180deg) */
+.card-back {
+  background: #2563eb;
+  transform: rotateY(180deg); /* hidden until card flips */
+  text-align: center;
+}
+
+.card-back h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card-back p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* "Explore →" styled pill button on the back */
+.card-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: background 0.2s;
+}
+
+.card:hover .card-cta {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+#about{
+ margin-top: 100px;
+   background-color: #2563eb;
+   text-align: center;
+ padding:45px 24px;
+}
+#about h3{
+  font-size: 45px;
+  font-family:  'Syne', sans-serif;
+  margin-bottom: 35px;
+
+}
+#about p {
+  font-size: 16px;
+  color:rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  width: 50%;
+ margin-left: 300px;
+ 
+}
+#about h3 span {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0 6px;
+  border-radius: 6px;
+}
+.back-home{
+  margin-left: 300px;
+  margin-top: 20px;
+}
+.study{
+ font-size: 60px;
+ font-family: 'Syne',sans-serif;
+ color: #0f172a;
+ margin-bottom: 15px;
+
+}
+.study span{
+text-shadow: 5px 5px 3px #1b48c5;
+color: #2563eb;
+}
+.study-text p{
+text-align: left ;
+line-height-step: 100px;
+margin-bottom: 100px;
+}
+.tools li {
+  font-size: 30px;
+  color: #0f172a;
+
+}
+.tools img {
+  width: 60px;
+  margin-left: 25px;
+}
+.tools  a h6{
+  margin-top: 0px;
+  margin-left: 5px;
+  color: #0f172a;
+  cursor: pointer;
+}
+.tools  a h6 :hover{
+ color: #0f172a;
+}
+.note{
+  margin-left: 20px;
+    display: flex;
+  justify-content: center;
+}

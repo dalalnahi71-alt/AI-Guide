@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Programming Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f8faff;
+    color:#0f172a;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    width:100%;
+    background:white;
+    border-bottom:1px solid #dbeafe;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Syne',sans-serif;
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#2563eb;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.nav-links a{
+    color:#64748b;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.start-btn{
+    background:#2563eb;
+    color:white;
+    padding:11px 18px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.start-btn:hover{
+    background:#1d4ed8;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    max-width:1100px;
+    margin:auto;
+    padding:90px 25px 60px;
+    text-align:center;
+}
+
+.hero h1{
+    font-family:'Syne',sans-serif;
+    font-size:clamp(42px,6vw,72px);
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#2563eb;
+}
+
+.hero p{
+    max-width:780px;
+    margin:auto;
+    font-size:18px;
+    color:#64748b;
+    line-height:1.9;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.steps{
+    max-width:1200px;
+    margin:auto;
+    padding:20px 25px 100px;
+}
+
+.step{
+    margin-bottom:90px;
+}
+
+.step-header{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    margin-bottom:28px;
+}
+
+.number{
+    min-width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+    font-size:18px;
+    font-family:'Syne',sans-serif;
+}
+
+.step-title{
+    font-family:'Syne',sans-serif;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.goal{
+    display:inline-block;
+    padding:5px 14px;
+    border-radius:30px;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    color:#2563eb;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.step-desc{
+    color:#64748b;
+    max-width:850px;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border:1px solid #dbeafe;
+    border-radius:20px;
+    padding:24px;
+    transition:0.35s;
+    box-shadow:0 4px 18px rgba(37,99,235,0.06);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(37,99,235,0.14);
+}
+
+.card-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+}
+
+.logo-img{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+    border-radius:12px;
+    padding:6px;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+}
+
+.card h3{
+    font-size:20px;
+    font-family:'Syne',sans-serif;
+}
+
+.tool-desc{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/* =========================
+   PROMPT STRUCTURE
+========================= */
+
+.structure{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:18px;
+}
+
+.structure h4{
+    margin-bottom:10px;
+    color:#2563eb;
+    font-size:14px;
+}
+
+.structure ul{
+    padding-left:18px;
+}
+
+.structure li{
+    margin-bottom:7px;
+    font-size:13px;
+    color:#475569;
+}
+
+/* =========================
+   PROMPT
+========================= */
+
+.prompt-box{
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:18px;
+}
+
+.prompt-title{
+    font-size:14px;
+    font-weight:700;
+    color:#2563eb;
+    margin-bottom:12px;
+}
+
+.prompt{
+    white-space:pre-line;
+    font-size:13px;
+    color:#0f172a;
+    line-height:1.9;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.tool-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:11px 18px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.tool-btn:hover{
+    background:#1d4ed8;
+}
+
+/* =========================
+   MASTER PROMPT
+========================= */
+
+.master{
+    background:linear-gradient(to right,#1e293b,#0f172a);
+    color:white;
+    padding:40px;
+    border-radius:24px;
+    margin-top:80px;
+}
+
+.master h2{
+    font-family:'Syne',sans-serif;
+    font-size:38px;
+    margin-bottom:18px;
+}
+
+.master p{
+    color:#cbd5e1;
+    margin-bottom:24px;
+}
+
+.master-prompt{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:24px;
+    border-radius:16px;
+    white-space:pre-line;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    padding:28px;
+    text-align:center;
+    background:white;
+    border-top:1px solid #dbeafe;
+    color:#64748b;
+    font-size:14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:18px 20px;
+        flex-direction:column;
+        gap:16px;
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .step-title{
+        font-size:24px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+<div class="logo">
+AI <span>Programming Hub</span>
+</div>
+
+<nav class="nav-links">
+<a href="AI-Guide.html">Home</a>
+<a href="#tools">Tools</a>
+<a href="AI-Guide.html#about">about</a>
+<a href="#prompts">Prompts</a>
+</nav>
+
+<a href="#" class="start-btn">Start Learning</a>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<h1>Learn Programming with <span>Powerful AI</span></h1>
+
+<p>
+This website doesn't just give random prompts.
+It teaches you HOW to write professional prompts,
+structure requests correctly, and use AI tools like a real developer.
+</p>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<section class="steps" id="tools">
+
+<!-- ===================================================== -->
+<!-- STEP 1 -->
+<!-- ===================================================== -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="number">1</div>
+
+<div>
+<h2 class="step-title">🧠 Understand Code</h2>
+
+<div class="goal">
+"I don't understand this lesson or code"
+</div>
+
+<p class="step-desc">
+Use AI as a teacher. Learn concepts deeply instead of copying code blindly.
+</p>
+</div>
+
+</div>
+
+<div class="tools-grid">
+
+<!-- CHATGPT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/téléchargement (1).png" class="logo-img">
+<h3>ChatGPT</h3>
+</div>
+
+<p class="tool-desc">
+Best for deep explanations, beginner learning, and step-by-step teaching.
+</p>
+
+<div class="structure">
+<h4>🔥 How to write a strong prompt</h4>
+
+<ul>
+<li>Tell AI its role</li>
+<li>Specify your level</li>
+<li>Ask for examples</li>
+<li>Ask for tests/questions</li>
+<li>Request simple explanations first</li>
+</ul>
+</div>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ ADVANCED LEARNING PROMPT
+</div>
+
+<div class="prompt">
+You are an expert programming teacher.
+
+Explain this topic step by step for a beginner.
+
+Then:
+1. Explain it simply like I’m 12
+2. Give a real-life analogy
+3. Show practical coding examples
+4. List the most important key points
+5. Give common mistakes beginners make
+6. Ask me 3 questions to test my understanding
+
+If I answer incorrectly:
+- explain again in a simpler way
+
+Topic:
+[PASTE TOPIC HERE]
+</div>
+
+</div>
+
+<a href="https://chatgpt.com" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CLAUDE -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP.webp" class="logo-img">
+<h3>Claude AI</h3>
+</div>
+
+<p class="tool-desc">
+Excellent for analyzing long code, logic, and architecture.
+</p>
+
+<div class="structure">
+<h4>🔥 Strong prompt structure</h4>
+
+<ul>
+<li>Ask for analysis</li>
+<li>Ask for logic explanation</li>
+<li>Ask for improvements</li>
+<li>Ask for best practices</li>
+</ul>
+</div>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ CODE ANALYSIS PROMPT
+</div>
+
+<div class="prompt">
+Analyze this code deeply.
+
+Explain:
+1. The overall purpose
+2. How each section works
+3. The logic behind the code
+4. Possible bugs
+5. Performance improvements
+6. Better coding practices
+
+Then rewrite the code using cleaner architecture.
+
+Code:
+[PASTE CODE HERE]
+</div>
+
+</div>
+
+<a href="https://claude.ai" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 2 -->
+<!-- ===================================================== -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="number">2</div>
+
+<div>
+<h2 class="step-title">⚡ Write Code Faster</h2>
+
+<div class="goal">
+"I want AI to help me build faster"
+</div>
+
+<p class="step-desc">
+Generate cleaner code with better instructions and real developer structure.
+</p>
+</div>
+
+</div>
+
+<div class="tools-grid">
+
+<!-- COPILOT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP1.jpg" class="logo-img">
+<h3>GitHub Copilot</h3>
+</div>
+
+<p class="tool-desc">
+Perfect for autocomplete and rapid coding inside VS Code.
+</p>
+
+<div class="structure">
+<h4>🔥 Strong coding prompts</h4>
+
+<ul>
+<li>Describe UI clearly</li>
+<li>Mention technologies</li>
+<li>Request responsiveness</li>
+<li>Specify clean code</li>
+</ul>
+</div>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ PROFESSIONAL UI PROMPT
+</div>
+
+<div class="prompt">
+Build a modern responsive login page using:
+
+- HTML
+- CSS
+- JavaScript
+
+Requirements:
+- Mobile responsive
+- Modern UI design
+- Smooth animations
+- Clean structure
+- Accessibility support
+- Comment important sections
+
+Use professional front-end practices.
+</div>
+
+</div>
+
+<a href="https://github.com/features/copilot" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CURSOR -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP2.webp" class="logo-img">
+<h3>Cursor AI</h3>
+</div>
+
+<p class="tool-desc">
+AI-powered IDE for full project generation and coding assistance.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ FULL PROJECT PROMPT
+</div>
+
+<div class="prompt">
+Build a complete CRUD web application.
+
+Stack:
+- Frontend:
+- Backend:
+- Database:
+
+Requirements:
+1. Clean architecture
+2. Authentication system
+3. Responsive UI
+4. Error handling
+5. API structure
+6. Secure best practices
+7. Organized folders
+
+Explain every important file created.
+</div>
+
+</div>
+
+<a href="https://cursor.sh" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 3 -->
+<!-- ===================================================== -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="number">3</div>
+
+<div>
+<h2 class="step-title">🐞 Debug & Fix Errors</h2>
+
+<div class="goal">
+"My code doesn't work"
+</div>
+
+<p class="step-desc">
+Use AI like a senior developer to debug smarter.
+</p>
+</div>
+
+</div>
+
+<div class="tools-grid">
+
+<!-- CHATGPT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/téléchargement (1).png" class="logo-img">
+<h3>ChatGPT</h3>
+</div>
+
+<p class="tool-desc">
+Find bugs, explain them, and learn how to avoid them.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ DEBUGGING PROMPT
+</div>
+
+<div class="prompt">
+You are a senior software engineer.
+
+Debug this code.
+
+Tasks:
+1. Find the bug
+2. Explain WHY it happens
+3. Fix it step by step
+4. Show the corrected code
+5. Explain how to prevent this bug later
+6. Suggest cleaner alternatives
+
+Code:
+[PASTE CODE]
+</div>
+
+</div>
+
+<a href="https://chatgpt.com" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+<!-- REPLIT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP3.webp" class="logo-img">
+<h3>Replit AI</h3>
+</div>
+
+<p class="tool-desc">
+Great for testing, debugging, and running projects quickly.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ PERFORMANCE FIX PROMPT
+</div>
+
+<div class="prompt">
+Analyze this project for:
+- Bugs
+- Slow performance
+- Security problems
+- Bad structure
+
+Then:
+1. Optimize the code
+2. Improve readability
+3. Suggest best practices
+4. Explain all fixes clearly
+</div>
+
+</div>
+
+<a href="https://replit.com" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 4 -->
+<!-- ===================================================== -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="number">4</div>
+
+<div>
+<h2 class="step-title">🏗️ Build Projects</h2>
+
+<div class="goal">
+"I want to create real projects"
+</div>
+
+<p class="step-desc">
+AI becomes your assistant architect for full applications.
+</p>
+</div>
+
+</div>
+
+<div class="tools-grid">
+
+<!-- CURSOR -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP2.webp" class="logo-img">
+<h3>Cursor AI</h3>
+</div>
+
+<p class="tool-desc">
+Build advanced applications faster with AI.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ ADVANCED PROJECT PROMPT
+</div>
+
+<div class="prompt">
+Build a complete e-commerce platform.
+
+Features:
+- Authentication
+- Product system
+- Shopping cart
+- Payment integration
+- Admin dashboard
+- Database
+- API
+- Responsive design
+
+Also:
+1. Create folder structure
+2. Explain architecture
+3. Add security best practices
+4. Explain deployment steps
+</div>
+
+</div>
+
+<a href="https://cursor.sh" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CHATGPT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/téléchargement (1).png" class="logo-img">
+<h3>ChatGPT</h3>
+</div>
+
+<p class="tool-desc">
+Perfect for architecture planning and project ideas.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ SAAS ARCHITECTURE PROMPT
+</div>
+
+<div class="prompt">
+Design the architecture for a SaaS application.
+
+Include:
+1. Frontend structure
+2. Backend architecture
+3. Database design
+4. API structure
+5. Authentication flow
+6. Security practices
+7. Deployment strategy
+
+Explain why each technology is chosen.
+</div>
+
+</div>
+
+<a href="https://chatgpt.com" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- STEP 5 -->
+<!-- ===================================================== -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="number">5</div>
+
+<div>
+<h2 class="step-title">🚀 Learn & Improve</h2>
+
+<div class="goal">
+"I want a roadmap to become better"
+</div>
+
+<p class="step-desc">
+Use AI to create personalized learning systems.
+</p>
+</div>
+
+</div>
+
+<div class="tools-grid">
+
+<!-- CHATGPT -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/téléchargement (1).png" class="logo-img">
+<h3>ChatGPT</h3>
+</div>
+
+<p class="tool-desc">
+Create personalized learning plans and roadmaps.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ ROADMAP PROMPT
+</div>
+
+<div class="prompt">
+Act as a senior programming mentor.
+
+Create a roadmap to become:
+[FULL STACK / JAVA DEV / AI ENGINEER]
+
+Include:
+1. Daily schedule
+2. Weekly goals
+3. Projects to build
+4. Best resources
+5. Practice strategy
+6. Interview preparation
+7. Beginner → advanced path
+
+Time available:
+[PASTE HOURS]
+</div>
+
+</div>
+
+<a href="https://chatgpt.com" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+<!-- ROADMAP -->
+<div class="card">
+
+<div class="card-top">
+<img src="../image/OIP4.png" class="logo-img">
+<h3>Roadmap.sh</h3>
+</div>
+
+<p class="tool-desc">
+Best visual developer roadmaps on the internet.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+⭐ LEARNING PATH PROMPT
+</div>
+
+<div class="prompt">
+Show me a complete learning path for:
+[BACKEND / FRONTEND / DEVOPS]
+
+Requirements:
+- Beginner friendly
+- Ordered by difficulty
+- Include projects
+- Include essential tools
+- Include real-world skills
+</div>
+
+</div>
+
+<a href="https://roadmap.sh" target="_blank" class="tool-btn">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- MASTER PROMPT -->
+<!-- ===================================================== -->
+
+<div class="master">
+
+<h2>💎 MASTER PROMPT</h2>
+
+<p>
+This is the premium all-in-one prompt that combines learning,
+summarizing, quizzes, flashcards, and study planning.
+</p>
+
+<div class="master-prompt" id="prompts">
+You are my personal AI programming tutor.
+
+Help me master this topic efficiently.
+
+Steps:
+1. Explain it simply
+2. Give beginner explanation
+3. Give advanced explanation
+4. Show real coding examples
+5. Summarize key points
+6. Create a quiz
+7. Create flashcards
+8. Give debugging exercises
+9. Suggest projects to build
+10. Create a study roadmap
+
+Adapt based on:
+- My level
+- My mistakes
+- My answers
+
+Topic:
+[PASTE HERE]
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+© 2026 AI Programming Hub — Learn smarter with AI
+</footer>
+
+</body>
+</html>

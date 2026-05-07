@@ -1,0 +1,1073 @@
+
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Business Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f8faff;
+    color:#0f172a;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 50px;
+    background:white;
+    border-bottom:1px solid #dbeafe;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Syne';
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#2563eb;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:#475569;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.btn{
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    text-align:center;
+    padding:70px 20px 50px;
+}
+
+.header h1{
+    font-size:55px;
+    font-family:'Syne';
+    margin-bottom:15px;
+}
+
+.header span{
+    color:#2563eb;
+}
+
+.header p{
+    max-width:760px;
+    margin:auto;
+    color:#64748b;
+    font-size:17px;
+}
+
+/* ================= WRAPPER ================= */
+
+.steps{
+    max-width:1150px;
+    margin:auto;
+    padding:20px;
+}
+
+/* ================= STEP ================= */
+
+.step{
+    margin-bottom:80px;
+}
+
+.step-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:25px;
+}
+
+.num{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.title{
+    font-size:28px;
+    font-family:'Syne';
+    font-weight:800;
+}
+
+.goal{
+    display:inline-block;
+    margin-top:6px;
+    background:#eff6ff;
+    color:#2563eb;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+/* ================= TOOLS GRID ================= */
+
+.tools{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:22px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:white;
+    border:1px solid #dbeafe;
+    border-radius:18px;
+    padding:22px;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(37,99,235,0.05);
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px rgba(37,99,235,0.12);
+}
+
+/* ================= TOP ================= */
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.logo-img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    border-radius:12px;
+    padding:5px;
+}
+
+.tool-name{
+    font-size:20px;
+    font-weight:700;
+}
+
+.tool-desc{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+/* ================= PROMPT BOX ================= */
+
+.prompt-box{
+    background:#eff6ff;
+    border-left:4px solid #2563eb;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:16px;
+}
+
+.prompt-title{
+    color:#2563eb;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.prompt{
+    font-size:13px;
+    white-space:pre-line;
+}
+
+/* ================= TIPS ================= */
+
+.tips{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:18px;
+}
+
+.tips h4{
+    font-size:13px;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.tips ul{
+    padding-left:18px;
+}
+
+.tips li{
+    font-size:13px;
+    color:#475569;
+    margin-bottom:7px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn2{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn2:hover{
+    background:#1d4ed8;
+}
+
+/* ================= MASTER SECTION ================= */
+
+.master{
+    background:linear-gradient(to right,#2563eb,#1d4ed8);
+    color:white;
+    padding:35px;
+    border-radius:22px;
+    margin-top:60px;
+}
+
+.master h2{
+    font-size:34px;
+    font-family:'Syne';
+    margin-bottom:15px;
+}
+
+.master p{
+    margin-bottom:20px;
+    color:#dbeafe;
+}
+
+.master-box{
+    background:white;
+    color:#0f172a;
+    padding:20px;
+    border-radius:14px;
+    white-space:pre-line;
+    font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:80px;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #dbeafe;
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+}
+
+.header h1{
+    font-size:40px;
+}
+
+.title{
+    font-size:22px;
+}
+
+.tools{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+<div class="logo">
+AI <span>Business Hub</span>
+</div>
+
+<nav class="nav-links">
+<a href="AI-Guide.html">Home</a>
+<a href="#tools">Tools</a>
+<a href="AI-Guide.html#about">About</a>
+</nav>
+
+<a class="btn" href="#">Start Building</a>
+
+</header>
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+<h1>Build Smarter with <span>AI Business Tools</span></h1>
+
+<p>
+Discover the best AI tools for marketing, business planning,
+content creation, productivity, and startup growth —
+with professional prompts and smart prompt-writing techniques.
+</p>
+
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<div class="steps" id="tools">
+
+<!-- ================================================= -->
+<!-- STEP 1 -->
+<!-- ================================================= -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="num">1</div>
+
+<div>
+<div class="title">📈 Business Strategy & Ideas</div>
+<div class="goal">"I need business ideas and planning"</div>
+</div>
+
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Generate startup ideas, strategies, and business models.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Business Strategy Prompt
+</div>
+
+<div class="prompt">
+Act as a startup consultant.
+
+Help me build a business around this idea.
+
+Include:
+1. Target audience
+2. Business model
+3. Monetization strategy
+4. Competitor analysis
+5. Growth strategy
+6. Beginner mistakes to avoid
+
+Business idea:
+[PASTE HERE]
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Why this prompt works</h4>
+
+<ul>
+<li>Assigns a professional role</li>
+<li>Uses structured instructions</li>
+<li>Focuses on practical strategy</li>
+<li>Requests actionable advice</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/OIP.webp">
+<div class="tool-name">Claude AI</div>
+</div>
+
+<p class="tool-desc">
+Excellent for deep analysis and long-form business planning.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Advanced Planning Prompt
+</div>
+
+<div class="prompt">
+Analyze this business idea deeply.
+
+Then:
+- Identify opportunities
+- Identify risks
+- Suggest improvements
+- Compare with competitors
+- Create a realistic launch strategy
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Prompt Formula</h4>
+
+<ul>
+<li>Ask for analysis + improvement</li>
+<li>Request risk evaluation</li>
+<li>Focus on realistic execution</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://claude.ai" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- STEP 2 -->
+<!-- ================================================= -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="num">2</div>
+
+<div>
+<div class="title">📢 Marketing & Content Creation</div>
+<div class="goal">"I need customers and attention"</div>
+</div>
+
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Create marketing campaigns, captions, and social content.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Marketing Prompt
+</div>
+
+<div class="prompt">
+Act as a digital marketing expert.
+
+Create:
+- Instagram captions
+- TikTok ideas
+- Email campaign
+- Content calendar
+- Viral hooks
+- CTA ideas
+
+Target audience:
+[PASTE HERE]
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Effective Prompt Tips</h4>
+
+<ul>
+<li>Always define your audience</li>
+<li>Ask for multiple content formats</li>
+<li>Specify platform style</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement 55.jpg">
+<div class="tool-name">Canva AI</div>
+</div>
+
+<p class="tool-desc">
+Create business presentations and marketing visuals easily.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Design Prompt
+</div>
+
+<div class="prompt">
+Create a modern business presentation.
+
+Style:
+- Clean
+- Professional
+- Startup aesthetic
+
+Include:
+- Brand colors
+- Social media visuals
+- Product promotion slides
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Design Strategy</h4>
+
+<ul>
+<li>Describe the visual style clearly</li>
+<li>Mention target audience</li>
+<li>Specify branding needs</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://canva.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- STEP 3 -->
+<!-- ================================================= -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="num">3</div>
+
+<div>
+<div class="title">🤝 Productivity & Automation</div>
+<div class="goal">"I want to save time"</div>
+</div>
+
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (5).png">
+<div class="tool-name">Notion AI</div>
+</div>
+
+<p class="tool-desc">
+Organize projects, tasks, and team workflow.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Productivity Prompt
+</div>
+
+<div class="prompt">
+Create a business productivity system.
+
+Include:
+- Task tracker
+- Weekly goals
+- Team workflow
+- Meeting notes
+- Progress dashboard
+- Priority management
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Productivity Formula</h4>
+
+<ul>
+<li>Ask for organization systems</li>
+<li>Focus on clarity and workflow</li>
+<li>Break work into manageable tasks</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://notion.so" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (6).png">
+<div class="tool-name">Zapier AI</div>
+</div>
+
+<p class="tool-desc">
+Automate repetitive business tasks between apps.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Automation Prompt
+</div>
+
+<div class="prompt">
+Suggest automation workflows for my business.
+
+Tasks to automate:
+- Emails
+- Customer support
+- CRM updates
+- Social posting
+- Lead collection
+
+Goal:
+Save maximum time.
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Why it works</h4>
+
+<ul>
+<li>Defines business operations clearly</li>
+<li>Focuses on efficiency</li>
+<li>Requests real workflows</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://zapier.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- STEP 4 -->
+<!-- ================================================= -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="num">4</div>
+
+<div>
+<div class="title">💰 Sales & Customer Communication</div>
+<div class="goal">"I want more conversions"</div>
+</div>
+
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Generate persuasive sales messages and client communication.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Sales Prompt
+</div>
+
+<div class="prompt">
+Act as a sales expert.
+
+Write:
+- Persuasive sales messages
+- Client replies
+- Product descriptions
+- Conversion-focused CTA
+- Objection handling responses
+
+Tone:
+Professional and convincing.
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Sales Prompt Tips</h4>
+
+<ul>
+<li>Specify tone and audience</li>
+<li>Focus on persuasion</li>
+<li>Request conversion optimization</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/copyailogo.jpg">
+<div class="tool-name">Copy.ai</div>
+</div>
+
+<p class="tool-desc">
+Generate marketing copy and business emails quickly.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Copywriting Prompt
+</div>
+
+<div class="prompt">
+Write high-converting copy for:
+
+- Landing page
+- Product page
+- Email campaign
+- Ad copy
+
+Target audience:
+[PASTE HERE]
+
+Goal:
+Increase conversions.
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Copywriting Formula</h4>
+
+<ul>
+<li>Always define audience</li>
+<li>Specify conversion goal</li>
+<li>Ask for emotional hooks</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://copy.ai" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- STEP 5 -->
+<!-- ================================================= -->
+
+<div class="step">
+
+<div class="step-header">
+
+<div class="num">5</div>
+
+<div>
+<div class="title">🚀 Startup Growth & Scaling</div>
+<div class="goal">"I want to grow my business"</div>
+</div>
+
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (7).png">
+<div class="tool-name">Perplexity AI</div>
+</div>
+
+<p class="tool-desc">
+Research competitors, markets, and trends quickly.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Research Prompt
+</div>
+
+<div class="prompt">
+Research this industry deeply.
+
+Include:
+- Market trends
+- Competitors
+- Opportunities
+- Threats
+- Future predictions
+- Growth ideas
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Smart Research Strategy</h4>
+
+<ul>
+<li>Request structured analysis</li>
+<li>Focus on opportunities</li>
+<li>Ask for future trends</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://perplexity.ai" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Build scalable growth strategies for startups and brands.
+</p>
+
+<div class="prompt-box">
+
+<div class="prompt-title">
+🔥 Growth Prompt
+</div>
+
+<div class="prompt">
+Act as a startup growth strategist.
+
+Create:
+- 90-day growth plan
+- Customer acquisition strategy
+- Social media growth system
+- Revenue optimization ideas
+- Scaling roadmap
+</div>
+
+</div>
+
+<div class="tips">
+
+<h4>💡 Growth Formula</h4>
+
+<ul>
+<li>Break growth into phases</li>
+<li>Request measurable strategies</li>
+<li>Focus on realistic scaling</li>
+</ul>
+
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- MASTER PROMPT -->
+<!-- ================================================= -->
+
+<div class="master">
+
+<h2>💎 MASTER BUSINESS PROMPT</h2>
+
+<p>
+This premium prompt combines business planning,
+marketing, sales, productivity, and growth strategy
+in one powerful prompt.
+</p>
+
+<div class="master-box">
+You are my personal AI business consultant.
+
+Help me grow this business efficiently.
+
+Steps:
+1. Analyze the business idea
+2. Identify target audience
+3. Create a marketing strategy
+4. Suggest monetization methods
+5. Build a growth roadmap
+6. Improve productivity systems
+7. Suggest automation opportunities
+8. Identify risks and opportunities
+
+Adapt based on my business type and goals.
+
+Business:
+[PASTE HERE]
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+© 2026 AI Business Hub — Build smarter, grow faster
+</div>
+
+</body>
+</html>

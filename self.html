@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Self Development Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f8faff;
+    color:#0f172a;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 50px;
+    background:white;
+    border-bottom:1px solid #bfdbfe;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-family:'Syne';
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#2563eb;
+}
+
+.nav-links a{
+    margin:0 12px;
+    color:#64748b;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.btn{
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+/* ================= HERO ================= */
+
+.header{
+    text-align:center;
+    padding:70px 20px 50px;
+}
+
+.header h1{
+    font-size:55px;
+    font-family:'Syne';
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.header span{
+    color:#2563eb;
+}
+
+.header p{
+    max-width:760px;
+    margin:auto;
+    color:#64748b;
+    font-size:17px;
+}
+
+/* ================= PROMPT GUIDE ================= */
+
+.guide-box{
+    max-width:1000px;
+    margin:0 auto 60px;
+    background:white;
+    border:1px solid #bfdbfe;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 8px 30px rgba(37,99,235,0.08);
+}
+
+.guide-box h2{
+    font-family:'Syne';
+    margin-bottom:18px;
+    font-size:30px;
+}
+
+.guide-box p{
+    color:#64748b;
+    margin-bottom:18px;
+}
+
+.prompt-structure{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-top:20px;
+}
+
+.structure-card{
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    border-radius:14px;
+    padding:18px;
+}
+
+.structure-card h3{
+    color:#2563eb;
+    margin-bottom:8px;
+    font-size:17px;
+}
+
+.structure-card p{
+    font-size:14px;
+    margin:0;
+    color:#475569;
+}
+
+/* ================= STEPS ================= */
+
+.steps{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.step{
+    margin-bottom:70px;
+}
+
+.step-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.num{
+    width:45px;
+    height:45px;
+    background:#2563eb;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.title{
+    font-family:'Syne';
+    font-size:30px;
+    font-weight:700;
+}
+
+.goal{
+    display:inline-block;
+    margin-top:8px;
+    background:#eff6ff;
+    color:#2563eb;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* ================= GRID ================= */
+
+.tools{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:22px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:white;
+    border:1px solid #bfdbfe;
+    border-radius:18px;
+    padding:22px;
+    transition:0.3s;
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(37,99,235,0.15);
+}
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.logo-img{
+    width:48px;
+    height:48px;
+    border-radius:10px;
+    object-fit:contain;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    padding:5px;
+}
+
+.tool-name{
+    font-size:20px;
+    font-weight:700;
+}
+
+.tool-desc{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+/* ================= PROMPT ================= */
+
+.prompt-title{
+    color:#2563eb;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.prompt{
+    background:#eff6ff;
+    border-left:4px solid #2563eb;
+    padding:14px;
+    border-radius:10px;
+    font-size:13px;
+    margin-bottom:15px;
+    white-space:pre-line;
+    color:#0f172a;
+}
+
+.tips{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:15px;
+}
+
+.tips h4{
+    margin-bottom:8px;
+    color:#0f172a;
+}
+
+.tips ul{
+    padding-left:18px;
+}
+
+.tips li{
+    margin-bottom:6px;
+    font-size:13px;
+    color:#475569;
+}
+
+/* ================= BUTTON ================= */
+
+.btn2{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn2:hover{
+    background:#1d4ed8;
+}
+
+/* ================= BONUS ================= */
+
+.master{
+    background:linear-gradient(to right,#1e3a8a,#2563eb);
+    color:white;
+    border-radius:20px;
+    padding:35px;
+    margin-top:60px;
+}
+
+.master h2{
+    font-family:'Syne';
+    margin-bottom:18px;
+    font-size:34px;
+}
+
+.master p{
+    margin-bottom:18px;
+}
+
+.master-prompt{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:20px;
+    border-radius:14px;
+    white-space:pre-line;
+    font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:70px;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #bfdbfe;
+    background:white;
+    color:#64748b;
+    font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:15px;
+}
+
+.header h1{
+    font-size:40px;
+}
+
+.title{
+    font-size:24px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+<div class="logo">
+AI <span>Self Growth Hub</span>
+</div>
+
+<nav class="nav-links">
+<a href="AI-Guide.html">Home</a>
+<a href="#tools">Tools</a>
+<a href="AI-Guide.html#about">About</a>
+</nav>
+
+<a class="btn" href="#">Start Growing</a>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<div class="header">
+
+<h1>Become Better with <span>AI Tools</span></h1>
+
+<p>
+Use AI to improve mindset, discipline, productivity, confidence,
+communication, habits, fitness, and personal growth with professional prompts.
+</p>
+
+</div>
+
+<!-- ================= PROMPT GUIDE ================= -->
+
+<div class="guide-box">
+
+<h2>🔥 How to Write Powerful AI Prompts</h2>
+
+<p>
+Most people write weak prompts like:
+<b>"Help me improve"</b>
+
+Professional prompts are specific, structured, and goal-focused.
+</p>
+
+<div class="prompt-structure">
+
+<div class="structure-card">
+<h3>1. Give AI a Role</h3>
+<p>
+Example:
+"You are a productivity coach"
+instead of just asking random questions.
+</p>
+</div>
+
+<div class="structure-card">
+<h3>2. Explain Your Goal</h3>
+<p>
+Tell the AI exactly what you want:
+confidence, discipline, better habits, communication, etc.
+</p>
+</div>
+
+<div class="structure-card">
+<h3>3. Ask for Structure</h3>
+<p>
+Ask for:
+step-by-step plans, routines, exercises, examples, tracking systems.
+</p>
+</div>
+
+<div class="structure-card">
+<h3>4. Add Your Level</h3>
+<p>
+Beginner? Intermediate?
+Busy schedule?
+Low motivation?
+AI answers become more personalized.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STEPS ================= -->
+
+<div class="steps" id="tools">
+
+<!-- ================= STEP 1 ================= -->
+
+<div class="step">
+
+<div class="step-header">
+<div class="num">1</div>
+
+<div>
+<div class="title">🧠 Mindset & Self Awareness</div>
+<div class="goal">"I want to understand myself better"</div>
+</div>
+</div>
+
+<div class="tools">
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Use AI as a mindset coach to identify limiting beliefs and improve self-awareness.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+You are a self-development coach.
+
+Help me analyze my mindset and habits.
+
+Do the following:
+1. Identify limiting beliefs
+2. Explain what may cause them
+3. Suggest practical mindset shifts
+4. Give daily exercises
+5. Create a confidence-building routine
+
+My situation:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Why this prompt works</h4>
+<ul>
+<li>Gives AI a clear role</li>
+<li>Asks for actionable advice</li>
+<li>Creates personalized coaching</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/OIP.webp">
+<div class="tool-name">Claude AI</div>
+</div>
+
+<p class="tool-desc">
+Great for deep reflection, emotional intelligence, and long-form self analysis.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Act as an emotional intelligence mentor.
+
+Analyze this situation and help me:
+- Understand my emotions
+- Improve communication
+- React more calmly
+- Build emotional maturity
+
+Situation:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Prompt Structure</h4>
+<ul>
+<li>Explain the context</li>
+<li>Ask for emotional analysis</li>
+<li>Request practical improvement steps</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://claude.ai" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STEP 2 ================= -->
+
+<div class="step">
+
+<div class="step-header">
+<div class="num">2</div>
+
+<div>
+<div class="title">📈 Productivity & Discipline</div>
+<div class="goal">"I want to stop procrastinating"</div>
+</div>
+</div>
+
+<div class="tools">
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (5).png">
+<div class="tool-name">Notion AI</div>
+</div>
+
+<p class="tool-desc">
+Build routines, systems, and productivity dashboards.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Create a productivity system for me.
+
+Include:
+- Daily schedule
+- Habit tracker
+- Deep work sessions
+- Weekly review
+- Goal tracking
+- Anti-procrastination strategy
+
+My goals:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Strong Prompt Tips</h4>
+<ul>
+<li>Always include your goals</li>
+<li>Ask for structure</li>
+<li>Request realistic routines</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://notion.so" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Create custom discipline systems and focus plans.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Act as a productivity coach.
+
+Help me become more disciplined.
+
+Create:
+1. Morning routine
+2. Focus routine
+3. Dopamine detox strategy
+4. Daily priorities
+5. Motivation system
+6. Accountability plan
+
+Lifestyle:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Why it's effective</h4>
+<ul>
+<li>Breaks big goals into systems</li>
+<li>Creates consistency</li>
+<li>Focuses on habits, not motivation only</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STEP 3 ================= -->
+
+<div class="step">
+
+<div class="step-header">
+<div class="num">3</div>
+
+<div>
+<div class="title">💬 Communication & Social Skills</div>
+<div class="goal">"I want to communicate better"</div>
+</div>
+</div>
+
+<div class="tools">
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Practice conversations and improve confidence in communication.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Act as a communication coach.
+
+Help me improve:
+- Conversation skills
+- Confidence
+- Charisma
+- Listening
+- Social anxiety
+
+Then:
+1. Give examples
+2. Simulate conversations
+3. Correct my responses
+4. Suggest better wording
+</div>
+
+<div class="tips">
+<h4>💡 Prompt Strategy</h4>
+<ul>
+<li>Ask AI to simulate situations</li>
+<li>Practice actively</li>
+<li>Request feedback and corrections</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/OIP.webp">
+<div class="tool-name">Claude AI</div>
+</div>
+
+<p class="tool-desc">
+Useful for improving empathy and emotional communication.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Analyze this conversation.
+
+Tell me:
+- What I did well
+- What I could improve
+- Better responses
+- Emotional signals I missed
+- How to sound more confident
+</div>
+
+<div class="tips">
+<h4>💡 Why it works</h4>
+<ul>
+<li>Uses real situations</li>
+<li>Improves emotional intelligence</li>
+<li>Builds practical communication skills</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://claude.ai" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STEP 4 ================= -->
+
+<div class="step">
+
+<div class="step-header">
+<div class="num">4</div>
+
+<div>
+<div class="title">💪 Health & Habit Building</div>
+<div class="goal">"I want better habits and energy"</div>
+</div>
+</div>
+
+<div class="tools">
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Build custom healthy routines and fitness habits.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Act as a healthy lifestyle coach.
+
+Help me build better habits.
+
+Create:
+- Sleep routine
+- Workout schedule
+- Healthy habits
+- Energy boosting tips
+- Screen time reduction plan
+- Weekly habit tracker
+
+My current lifestyle:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Best Practice</h4>
+<ul>
+<li>Be honest about your routine</li>
+<li>Ask for realistic habits</li>
+<li>Focus on consistency over perfection</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (5).png">
+<div class="tool-name">Notion AI</div>
+</div>
+
+<p class="tool-desc">
+Track habits, routines, goals, and progress visually.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Create a personal growth dashboard.
+
+Include:
+- Habit tracker
+- Daily reflection
+- Mood tracking
+- Workout tracker
+- Goal progress
+- Weekly review system
+</div>
+
+<div class="tips">
+<h4>💡 Structure Tips</h4>
+<ul>
+<li>Track measurable habits</li>
+<li>Review weekly</li>
+<li>Keep the system simple</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://notion.so" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= STEP 5 ================= -->
+
+<div class="step">
+
+<div class="step-header">
+<div class="num">5</div>
+
+<div>
+<div class="title">🚀 Life Vision & Future Goals</div>
+<div class="goal">"I want direction in life"</div>
+</div>
+</div>
+
+<div class="tools">
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/téléchargement (1).png">
+<div class="tool-name">ChatGPT</div>
+</div>
+
+<p class="tool-desc">
+Create long-term life roadmaps and personal growth plans.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Act as a life strategy coach.
+
+Help me create a long-term vision.
+
+Include:
+1. Career goals
+2. Skill development
+3. Financial growth
+4. Personal growth
+5. Confidence goals
+6. 1-year action plan
+
+My dream life:
+[PASTE HERE]
+</div>
+
+<div class="tips">
+<h4>💡 Why this is powerful</h4>
+<ul>
+<li>Turns dreams into systems</li>
+<li>Creates actionable plans</li>
+<li>Builds long-term clarity</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://chatgpt.com" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="top">
+<img class="logo-img" src="../image/OIP4.png">
+<div class="tool-name">Roadmap.sh</div>
+</div>
+
+<p class="tool-desc">
+Useful for career roadmaps and structured skill learning.
+</p>
+
+<div class="prompt-title">⭐ Strong Prompt</div>
+
+<div class="prompt">
+Create a roadmap for the skills I need to achieve this goal.
+
+Goal:
+[PASTE HERE]
+
+Include:
+- Beginner skills
+- Intermediate skills
+- Advanced skills
+- Practice projects
+- Timeline
+</div>
+
+<div class="tips">
+<h4>💡 Prompt Formula</h4>
+<ul>
+<li>Start with the final goal</li>
+<li>Ask for step-by-step roadmap</li>
+<li>Request timelines and projects</li>
+</ul>
+</div>
+
+<a class="btn2" href="https://roadmap.sh" target="_blank">
+Open Tool
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= BONUS ================= -->
+
+<div class="master">
+
+<h2>💎 MASTER SELF-DEVELOPMENT PROMPT</h2>
+
+<p>
+This is the premium-style prompt that combines coaching,
+planning, habits, productivity, and mindset in one system.
+</p>
+
+<div class="master-prompt">
+You are my personal self-development coach.
+
+Help me improve my life efficiently.
+
+Your mission:
+1. Analyze my current situation
+2. Identify weaknesses and strengths
+3. Create a realistic improvement plan
+4. Build habits and routines
+5. Improve mindset and confidence
+6. Help me stay disciplined
+7. Track my progress weekly
+
+Then:
+- Give practical exercises
+- Suggest daily routines
+- Correct my mistakes
+- Adapt based on my progress
+
+My goals:
+[PASTE HERE]
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+© 2026 AI Self Growth Hub — Become your best version with AI
+</div>
+
+</body>
+</html>
